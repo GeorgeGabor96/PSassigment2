@@ -1,11 +1,19 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>Cine esti?</h2>
 
-<form action="add">
-	<input type = "text" name = "t1"><br>
-	<input type = "text" name = "t2"><br>
-	<input type = "submit">
+<form action="pickAdmin">
+	<input type = "submit" value = "Admin">
 </form>
+
+<form action="pickUser">
+	<input type = "submit" value = "User">
+</form>
+
+<% for (int i=1; i<4; i++) { %>
+    <p>This number is <%= i %>.</p>
+	<input type = "text" name = <%= i%>>
+<% } %>
+
 </body>
 </html>
