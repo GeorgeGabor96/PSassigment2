@@ -6,11 +6,17 @@
 </head>
 <body>
 
-    <table>
-        <tr th:each="categories : ${categories}">
-            <td th:text="${categories}">Categories</td>
-        </tr>
-    </table>
+    <h1>Categorii</h1>
+    <ul>
+        <li th:each="categories : ${categories}">
+            <a th:href="@{'/User/' + ${categories.id}}"><pre th:text="${categories.name}"></pre></a>
+        </li>
+    </ul>
+
+    <h1>Produse</h1>
+    <ul th:each="products : ${products}">
+        <li th:text="${products.name} + ' - ' + ${products.price} + 'RON'"></li>
+    </ul>
 
 </body>
 </html>

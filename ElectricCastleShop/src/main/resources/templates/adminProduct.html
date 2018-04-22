@@ -5,11 +5,10 @@
     <title>Electric Castle Shop</title>
 </head>
 <body>
-
     <h1>Categorii</h1>
     <ul>
         <li th:each="categories : ${categories}">
-            <a th:href="@{'/User/' + ${categories.id}}"><pre th:text="${categories.name}"></pre></a>
+            <a th:href="@{'/Admin/Product/' + ${categories.id}}"><pre th:text="${categories.name} + '  ID:' + ${categories.id}"></pre></a>
         </li>
     </ul>
 
@@ -18,5 +17,11 @@
         <li th:text="${products.name} + ' - ' + ${products.price} + 'RON'"></li>
     </ul>
 
+    <form action="/Admin/Product" method="post">
+        Denumire: <input type="text" name="name">
+        Pret: <input type="text" name="price">
+        Parinte: <input type="text" name="parent">
+        <input type="submit" value="Add">
+    </form>
 </body>
 </html>

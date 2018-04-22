@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Electric Castle Shop</title>
+</head>
+<body>
+<h1>Categorii</h1>
+<ul>
+    <li th:each="categories : ${categories}">
+        <a th:href="@{'/Admin/CategoryDelete/' + ${categories.id}}"><pre th:text="${categories.name} + '  ID:' + ${categories.id}"></pre></a>
+    </li>
+</ul>
+
+<h1>Produse</h1>
+<ul th:each="products : ${products}">
+    <li th:text="${products.name} + ' - ' + ${products.price} + 'RON' + ' - ID: ' + ${products.id}"></li>
+</ul>
+
+<form action="/Admin/CategoryDelete" method="post">
+    ID: <input type="text" name="id">
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>

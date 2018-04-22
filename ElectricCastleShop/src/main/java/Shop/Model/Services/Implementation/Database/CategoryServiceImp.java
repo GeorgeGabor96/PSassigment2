@@ -25,16 +25,47 @@ public class CategoryServiceImp implements CategoryService {
             if (category.getParent() == null)
             {
                 categories.add(category);
+                addSubcategories(categories, category.getSubcategories(), 1);
             }
         }
 
         return categories;
     }
 
+    private String getPadding(int level)
+    {
+        StringBuilder padding = new StringBuilder();
+        for (int i = 0; i < level; ++i)
+        {
+            padding.append("    ");
+        }
+        return padding.toString();
+    }
+
+    private void addSubcategories(List<Category> categories, List<Category> subcategories, int level)
+    {
+        if (null == subcategories)
+        {
+            return;
+        }
+        for (Category category: subcategories)
+        {
+            String padding = getPadding(level);
+            category.setName(padding + category.getName());
+            categories.add(category);
+            addSubcategories(categories, category.getSubcategories(), level + 1);
+        }
+    }
 
     @Override
     public void deleteCategory(Integer id) {
-        categoryRepository.deleteById(id);
+        try {
+            categoryRepository.deleteById(id);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -44,6 +75,12 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public void createCategory(Category category) {
-        categoryRepository.save(category);
+        try {
+            categoryRepository.save(category);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

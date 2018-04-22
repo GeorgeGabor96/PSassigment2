@@ -11,6 +11,11 @@ import java.util.List;
 public class ProductServiceHardcode implements ProductService {
 
     @Override
+    public List<Product> getProductsWithParent(List<Category> categories, int id) {
+        return null;
+    }
+
+    @Override
     public void deleteProduct(Integer id) {
         List<Category> categories = CategoryServiceHardcode.getCategories();
 
